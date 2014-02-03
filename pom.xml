@@ -2,11 +2,12 @@
     xsi:schemaLocation="http://maven.apache.org/POM/4.0.0 http://maven.apache.org/xsd/maven-4.0.0.xsd">
     <modelVersion>4.0.0</modelVersion>
     <groupId>ru.bank24.tests</groupId>
-    <artifactId>acquiring.test</artifactId>
+    <artifactId>bank24apis.samples</artifactId>
+    
     <version>0.1-SNAPSHOT</version>
     
-    <name>Acquiring Service Tests</name>
-    <description>A test application for testing of Bank24's internet acquiring service throw web-service API</description>
+    <name>Bank24's API Service Tests</name>
+    <description></description>
     <prerequisites>
         <maven>3.0.0</maven>
     </prerequisites>

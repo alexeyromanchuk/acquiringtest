@@ -6,8 +6,7 @@ package ru.bank24.tests.commons;
 import java.util.Map;
 
 /**
- * 
- * Description ...
+ * Структура для хранения данных с ответом сервиса.
  * 
  * 
  * @author Alexey Romanchuk
@@ -28,7 +27,7 @@ public class ApiResult {
     private final String stateInfo;
 
     /**
-     * Данные (из раздела data транзакции)
+     * Данные (из раздела <data> транзакции)
      */
     private final Map<String, String> data;
 

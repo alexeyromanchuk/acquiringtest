@@ -6,7 +6,7 @@ package ru.bank24.tests.commons;
 import org.springframework.core.NestedRuntimeException;
 
 /**
- * Внутренее nested - исключение.
+ * Внутреннее nested - исключение.
  * 
  * 
  * @author Alexey Romanchuk

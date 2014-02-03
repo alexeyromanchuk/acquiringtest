@@ -1,4 +1,5 @@
-acquiringtest
+bank24apis.samples
 =============
 
-A test application for Bank24's internet acquiring service
+1. Добавлено тестовое приложение для демонстрации API Банка24.ру в части работы с заявками
+на оплату через интернет-эквайринг (InternetAcquiringOrderTest.java).

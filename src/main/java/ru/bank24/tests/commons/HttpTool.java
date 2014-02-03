@@ -19,7 +19,7 @@ import org.springframework.web.client.DefaultResponseErrorHandler;
 import org.springframework.web.client.RestTemplate;
 
 /**
- * Штука, которая позволяет отправлять http-запросы до веб-сервисов Банка24.Ру.
+ * Штука, которая позволяет отправлять http-запросы.
  * 
  * 
  * @author Alexey Romanchuk

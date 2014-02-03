@@ -41,11 +41,28 @@ public class ApiTool extends Utils {
     private final HttpTool http;
 
     /**
-     * Конструктор сервиса
+     * Имя пользователя
      */
-    public ApiTool() {
+    private final String userName;
+
+    /**
+     * Пароль
+     */
+    private final String password;
+
+    /**
+     * Конструктор сервиса
+     * 
+     * @param userName
+     *            Имя пользователя
+     * @param password
+     *            Пароль
+     */
+    public ApiTool(String userName, String password) {
 
         this.http = new HttpTool("https://ext.bank24.ru");
+        this.userName = userName;
+        this.password = password;
     }
 
     /**
@@ -63,20 +80,16 @@ public class ApiTool extends Utils {
     /**
      * Создание заголовка с данными Basic - авторизации
      * 
-     * @param user
-     *            Имя пользователя
-     * @param password
-     *            пароль
      * @return Строка с заголовком
      */
-    protected String buildBasicAuth(String user, String password) {
+    protected String buildBasicAuth() {
 
-        String s = utf8(Base64.encode(utf8(user + ":" + password)));
+        String s = utf8(Base64.encode(utf8(userName + ":" + password)));
         return "Basic " + s;
     }
 
     /**
-     * Выполнение запроса через API
+     * Упаковка API - транзакции в http-запрос
      * 
      * @param trnCode
      *            Код транзакции
@@ -98,7 +111,7 @@ public class ApiTool extends Utils {
         headers.setAccept(Arrays.asList(MediaType.TEXT_XML));
         headers.setContentType(MediaType.TEXT_XML);
 
-        headers.add("Authorization", buildBasicAuth("demo", "demo"));
+        headers.add("Authorization", buildBasicAuth());
 
         ResponseEntity<String> r =
                 http.post("/wsexternal/message/process", rq, headers,
@@ -114,7 +127,8 @@ public class ApiTool extends Utils {
     }
 
     /**
-     * Выполнение api - запроса
+     * Выполнение api - запроса с простым парсингом результата, чтобы удобнее
+     * было работать с полученными ответами.
      * 
      * @param trnCode
      *            Код транзакции
@@ -127,9 +141,11 @@ public class ApiTool extends Utils {
         String xml = queryRaw(trnCode, data);
 
         SAXParserFactory f = SAXParserFactory.newInstance();
-
         InputStream stream = new ByteArrayInputStream(utf8(xml));
 
+        /*
+         * TODO: парсер не умеет пока работать с атрибутами элементов в ответах
+         */
         ApiXmlParser p = new ApiXmlParser();
 
         try {
